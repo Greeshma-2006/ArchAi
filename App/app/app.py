@@ -21,6 +21,14 @@ st.set_page_config(
 # Apply custom CSS
 apply_custom_css()
 
+st.markdown("""
+<style>
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # Initialize session state
 if 'detection_manager' not in st.session_state:
     st.session_state.detection_manager = DetectionManager()
