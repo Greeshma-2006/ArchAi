@@ -10,7 +10,7 @@ import streamlit as st
 
 class DetectionManager:
     def __init__(self):
-        self.model_path = "/app/best.pt" #give the address of the model best.pt
+        self.model_path = "best.pt"
         self.model = None
         self.class_names = {
             0: "Stones / Stone Pillars / Stone Structures",
