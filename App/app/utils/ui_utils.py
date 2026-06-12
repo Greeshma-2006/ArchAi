@@ -20,8 +20,10 @@ import matplotlib.pyplot as plt
 
 def apply_custom_css():
     """Apply custom CSS styling to the Streamlit app"""
+    
     st.markdown("""
     <style>
+                
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
     
@@ -122,11 +124,82 @@ def apply_custom_css():
         background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
     }
     
-    /* Sidebar navigation styling */
-    .stSidebar {
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    /* Streamlit sidebar background */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
     }
-    
+
+    [data-testid="stSidebar"] > div:first-child {
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%) !important;
+    }
+
+    /* ─── SIDEBAR TEXT: force everything white ─── */
+    [data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* option_menu nav links */
+    [data-testid="stSidebar"] .nav-link {
+        color: white !important;
+        background-color: transparent !important;
+    }
+
+    [data-testid="stSidebar"] .nav-link span,
+    [data-testid="stSidebar"] .nav-link p,
+    [data-testid="stSidebar"] .nav-link div {
+        color: white !important;
+    }
+
+    /* option_menu icons */
+    [data-testid="stSidebar"] .nav-link .icon {
+        color: white !important;
+    }
+
+    /* Selected nav item */
+    [data-testid="stSidebar"] .nav-link-selected {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 10px !important;
+        color: white !important;
+    }
+
+    [data-testid="stSidebar"] .nav-link-selected span,
+    [data-testid="stSidebar"] .nav-link-selected p,
+    [data-testid="stSidebar"] .nav-link-selected div {
+        color: white !important;
+    }
+
+    /* Hover state */
+    [data-testid="stSidebar"] .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+    }
+
+    /* Streamlit sidebar labels, markdown, text */
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] .stMarkdown p,
+    [data-testid="stSidebar"] .stMarkdown h1,
+    [data-testid="stSidebar"] .stMarkdown h2,
+    [data-testid="stSidebar"] .stMarkdown h3,
+    [data-testid="stSidebar"] .stMarkdown span,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] .stSelectbox label,
+    [data-testid="stSidebar"] .stTextInput label,
+    [data-testid="stSidebar"] .stRadio label,
+    [data-testid="stSidebar"] .stCheckbox label {
+        color: white !important;
+    }
+
+    /* streamlit_option_menu container inside sidebar */
+    [data-testid="stSidebar"] ul {
+        background-color: transparent !important;
+    }
+
+    [data-testid="stSidebar"] ul li a,
+    [data-testid="stSidebar"] ul li a span {
+        color: white !important;
+    }
+    /* ─── END SIDEBAR TEXT ─── */
+
     /* Metric styling */
     .metric-container {
         background: white;
@@ -243,18 +316,33 @@ def setup_sidebar_navigation():
             menu_icon="cast",
             default_index=0,
             styles={
-                "container": {"padding": "0!important", "background-color": "transparent"},
-                "icon": {"color": "white", "font-size": "18px"},
+                "container": {
+                    "padding": "0!important",
+                    "background-color": "transparent",
+                },
+                "icon": {
+                    "color": "white",
+                    "font-size": "18px",
+                },
                 "nav-link": {
                     "font-size": "16px",
                     "text-align": "left",
                     "margin": "0px",
                     "color": "white",
+                    "--hover-color": "rgba(255, 255, 255, 0.1)",
                     "background-color": "transparent",
                 },
                 "nav-link-selected": {
                     "background-color": "rgba(255, 255, 255, 0.2)",
                     "border-radius": "10px",
+                    "color": "white",
+                    "font-weight": "600",
+                },
+                "menu-title": {
+                    "color": "white",
+                },
+                "separator": {
+                    "background-color": "rgba(255,255,255,0.2)",
                 },
             }
         )
